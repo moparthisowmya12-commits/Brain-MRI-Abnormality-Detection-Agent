@@ -14,7 +14,9 @@ st.title("Brain MRI Abnormality Detection Agent")
 uploaded_file = st.file_uploader("Upload MRI Image", type=["jpg", "png", "jpeg"])
 
 def predict_mri(image):
+    image = image.convert("RGB")
     img = np.array(image)
+
     img = cv2.resize(img, (128, 128))
     img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
